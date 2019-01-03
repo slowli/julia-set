@@ -22,5 +22,6 @@ script:
   - npm run lint:js
   - npm run lint:types
   - npm test
-  - npm run test:e2e
+  # `jest-puppeteer` doesn't work in Node 6
+  - if [[ $TRAVIS_NODE_VERSION != "6" ]]; then npm run test:e2e; fi
   - node examples/build.js 100 100
