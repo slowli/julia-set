@@ -6,6 +6,8 @@ import { prepareForShader } from './parser';
 import fragmentShaderTemplate from './fragment.glsl';
 import { PALETTE_SIZE } from './palette';
 
+import type { Color} from './palette';
+
 export type GLParams = {
   context: WebGLRenderingContext,
   vertexShader: ?WebGLShader,
@@ -23,7 +25,7 @@ export type GLParams = {
   // Cached canvas height.
   canvasHeight: number,
   // Cached rasterized palette.
-  paletteColors: number[][],
+  paletteColors: Color[],
 };
 
 export type DrawingOptions = {
@@ -32,7 +34,7 @@ export type DrawingOptions = {
   height: number,
   iterations: number,
   distance: number,
-  paletteColors: number[][],
+  paletteColors: Color[],
   minX: number,
   minY: number,
   maxX: number,
@@ -217,7 +219,7 @@ function prepareTexture(glParams: GLParams, options: DrawingOptions): GLParams {
 /**
  * Checks if two rasterized palettes are identical.
  */
-function sameColors(cachedColors: number[][], paletteColors: number[][]): boolean {
+function sameColors(cachedColors: Color[], paletteColors: Color[]): boolean {
   return cachedColors.length === paletteColors.length
     && paletteColors.every(
       (color, i) => color.every((channel, ch) => channel === cachedColors[i][ch]),

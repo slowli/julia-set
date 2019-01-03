@@ -49,7 +49,7 @@ function createDrawingOptions(
   };
 }
 
-export default class Fractal {
+export default class JuliaSet {
   /**
    * GL parameters associated with the fractal.
    * @api private
