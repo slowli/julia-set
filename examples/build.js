@@ -38,11 +38,21 @@ const fractals = {
   },
 };
 
+if (process.argv.length < 4) {
+  console.error(`Usage: ${path.basename(__filename)} WIDTH HEIGHT
+
+    WIDTH and HEIGHT denote the size of generated images in pixels`);
+  process.exit(1);
+}
+const width = parseInt(process.argv[2], 10);
+const height = parseInt(process.argv[3], 10);
+console.log(`Creating ${width}x${height} images...`);
+
 Object.keys(fractals).forEach((name) => {
   const options = Object.assign({}, fractals[name]);
   options.screenshot = {
-    width: 480,
-    height: 270,
+    width,
+    height,
     path: path.join(__dirname, `${name}.png`),
   };
 
