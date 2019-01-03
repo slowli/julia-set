@@ -1,0 +1,25 @@
+dist: trusty
+branches:
+  only:
+    - master
+    # tags
+    - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
+
+cache:
+  - npm
+
+language: node_js
+node_js:
+  - 6
+  - 8
+  - 10
+
+install:
+  - npm install
+  - if [[ $TRAVIS_NODE_VERSION == "6" ]]; then npm run prepare; fi
+
+script:
+  - npm run lint:js
+  - npm run lint:types
+  - npm test
+  - npm test:e2e
