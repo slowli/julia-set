@@ -53,7 +53,8 @@ Object.keys(fractals).forEach((name) => {
   options.screenshot = {
     width,
     height,
-    path: path.join(__dirname, `${name}.png`),
+    quality: 92,
+    path: path.join(__dirname, `${name}.jpg`),
   };
 
   render(options)
