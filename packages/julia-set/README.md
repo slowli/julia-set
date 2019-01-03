@@ -14,6 +14,8 @@ declare class JuliaSet {
   static render(el: HTMLCanvasElement, options: Options);
   constructor(el: HTMLCanvasElement, options: Options);
 }
+
+export default JuliaSet;
 ```
 
 Here, `Options` are defined as follows:
@@ -42,7 +44,7 @@ declare type Options = {
   More reveals more details, but the picture may become desaturated.
 - `runawayDistance` is the stopgap distance for the algorithm. In some cases, increasing
   it may reveal fractal details. 
-- `antialias` corresponds to the eponymous flag for `WebGLRenderingContext`.
+- `antialias` corresponds to the [eponymous flag for `HMTLCanvasElement.getContext`][getContext()].
 
 ### Example
 
@@ -85,3 +87,4 @@ The following string values can be used as `options.palette`:
 
 [Julia sets]: https://en.wikipedia.org/wiki/Julia_set
 [webgl-support]: https://caniuse.com/#feat=webgl
+[getContext()]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext
