@@ -26,7 +26,7 @@ describe('render', () => {
         } else {
           resolve(dir);
         }
-      })
+      });
     });
     browser = await puppeteer.launch();
   });

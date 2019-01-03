@@ -2,6 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "prepare": "npm run build && lerna bootstrap",
     "build": "lerna run build",
     "test": "jest",
     "test:e2e": "jest -c jest.e2e.json",

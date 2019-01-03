@@ -1,4 +1,5 @@
 import { Buffer } from 'buffer';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import puppeteer from 'puppeteer';
 
 function createDataUrl({ width, height }) {
@@ -19,12 +20,11 @@ function createDataUrl({ width, height }) {
 
 export default async function render(options) {
   // Separate options into functional components.
-  let { screenshot: screenshotOptions, browser, ...fractalOptions } = options;
-  let width, height;
-  ({ width, height, ...screenshotOptions } = screenshotOptions);
+  const { screenshot, browser: maybeBrowser, ...fractalOptions } = options;
+  const { width, height, ...screenshotOptions } = screenshot;
 
-  const browserNeedsClosing = !browser;
-  browser = browser || await puppeteer.launch();
+  const browserNeedsClosing = !maybeBrowser;
+  const browser = maybeBrowser || await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(createDataUrl({ width, height }));
   await page.setViewport({ width, height });
@@ -35,10 +35,10 @@ export default async function render(options) {
     JuliaSet.render(document.getElementById('canvas'), opt);
   }, fractalOptions);
 
-  const screenshot = await page.screenshot(screenshotOptions);
+  const image = await page.screenshot(screenshotOptions);
   await page.close();
   if (browserNeedsClosing) {
     await browser.close();
   }
-  return screenshot;
+  return image;
 }
