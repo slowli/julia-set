@@ -4,8 +4,8 @@
   "scripts": {
     "prepare": "npm run build && lerna bootstrap",
     "build": "lerna run build",
-    "test": "jest",
-    "test:e2e": "jest -c jest.e2e.json",
+    "test": "jest -c jest.config.js",
+    "test:e2e": "jest -c jest-e2e.config.js",
     "lint:js": "eslint --ignore-path .gitignore --ext .js,.vue .",
     "lint:types": "flow check"
   },
@@ -47,13 +47,5 @@
     "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.14"
-  },
-  "jest": {
-    "testPathIgnorePatterns": [
-      "e2e-tests"
-    ],
-    "transform": {
-      "\\.js$": "babel-jest"
-    }
   }
 }
