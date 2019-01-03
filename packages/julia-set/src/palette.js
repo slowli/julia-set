@@ -15,8 +15,10 @@ function toColorArray(palette: Palette): Color[] {
   if (typeof palette === 'string') {
     return PALETTES[palette];
   }
-  return palette.map(([r, g, b, alpha]) =>
-    [r, g, b, typeof alpha === 'number' ? alpha : 255]);
+
+  return palette.map(([r, g, b, alpha]) => [
+    r, g, b, typeof alpha === 'number' ? alpha : 255,
+  ]);
 }
 
 export default function rasterize(palette: Palette) {

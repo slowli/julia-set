@@ -6,7 +6,7 @@ import { prepareForShader } from './parser';
 import fragmentShaderTemplate from './fragment.glsl';
 import { PALETTE_SIZE } from './palette';
 
-import type { Color} from './palette';
+import type { Color } from './palette';
 
 export type GLParams = {
   context: WebGLRenderingContext,
