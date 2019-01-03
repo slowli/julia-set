@@ -1,0 +1,16 @@
+{
+  "name": "julia-set-node",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "module": "lib/index.esm.js",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "dependencies": {
+    "julia-set": "0.1.0",
+    "puppeteer": "^1.11.0"
+  },
+  "devDependencies": {
+    "rollup": "^1.0.0"
+  }
+}

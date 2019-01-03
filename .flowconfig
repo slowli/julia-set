@@ -1,0 +1,7 @@
+[ignore]
+.*/node_modules/.*
+^/test/.*
+^/lib/.*
+
+[options]
+module.name_mapper.extension='glsl' -> '<PROJECT_ROOT>/_glsl.js'
