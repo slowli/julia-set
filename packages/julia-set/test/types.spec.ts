@@ -53,7 +53,7 @@ describe('JuliaSet (TypeScript)', () => {
         iterations: 75,
       });
       fractal.update();
-      fractal.update({height: 4});
+      fractal.update({ height: 4 });
       fractal.update({
         runawayDistance: 8,
         center: [-1, 1],

@@ -1,7 +1,7 @@
 declare type NamedPalette = 'grayscale';
 declare type Palette = NamedPalette | [number, number, number, number?][];
 
-declare type Options = {
+export interface Options {
   code: string,
   center?: [number, number],
   height?: number,
@@ -9,16 +9,16 @@ declare type Options = {
   iterations?: number,
   runawayDistance?: number,
   antialias?: boolean,
-};
+}
 
-declare type UpdateOptions = {
+export interface UpdateOptions {
   code?: string,
   center?: [number, number],
   height?: number,
   palette?: Palette,
   iterations?: number,
   runawayDistance?: number,
-};
+}
 
 declare class JuliaSet {
   static render(element: HTMLCanvasElement, options: Options): JuliaSet;

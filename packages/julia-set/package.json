@@ -2,10 +2,12 @@
   "name": "julia-set",
   "version": "0.1.0",
   "description": "Julia set fractals with WebGL",
+  "keywords": ["julia", "fractal", "webgl", "graphics"],
   "author": "Alex Ostrovski <ostrovski.alex@gmail.com>",
   "license": "Apache-2.0",
   "files": [
-    "lib"
+    "lib",
+    "index.d.ts"
   ],
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
