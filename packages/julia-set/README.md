@@ -7,7 +7,7 @@ The resulting images often have fractal-like nature.
 
 ## API
 
-An image can be created using the default export of the package:
+An image can be rendered using the default export of the package:
 
 ```typescript
 declare class JuliaSet {
@@ -21,7 +21,7 @@ export default JuliaSet;
 Here, `Options` are defined as follows:
 
 ```typescript
-declare type Options = {
+declare interface Options {
   code: string,
   palette?: string | [number, number, number, number?][],
   center?: [number, number],
@@ -29,7 +29,7 @@ declare type Options = {
   iterations?: number,
   runawayDistance?: number,
   antialias?: boolean,
-};
+}
 ```
 
 - `code` is the function of a complex variable `z`, such as `'z*z + 0.2i0.5'`.
@@ -50,6 +50,7 @@ declare type Options = {
 
 ```javascript
 import JuliaSet from 'julia-set';
+
 JuliaSet.render(document.getElementById('canvas'), {
   code: 'z * z + 0.33i0.5',
   palette: [[255, 255, 255], [0, 192, 0]],
@@ -85,6 +86,11 @@ The following string values can be used as `options.palette`:
 
 - `grayscale`
 
+## License
+
+`julia-set` is licensed under the [Apache 2.0 license][license].
+
 [Julia sets]: https://en.wikipedia.org/wiki/Julia_set
 [webgl-support]: https://caniuse.com/#feat=webgl
 [getContext()]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext
+[license]: https://www.apache.org/licenses/LICENSE-2.0
