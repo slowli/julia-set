@@ -2,8 +2,8 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "prepare": "npm run build && lerna bootstrap",
-    "build": "lerna run build",
+    "clean": "lerna clean && lerna run clean",
+    "prepare": "lerna bootstrap",
     "test": "jest -c jest.config.js",
     "test:e2e": "jest -c jest-e2e.config.js",
     "lint:js": "eslint --ignore-path .gitignore --ext .js,.vue .",

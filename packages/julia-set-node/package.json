@@ -1,6 +1,9 @@
 {
   "name": "julia-set-node",
+  "description": "Julia set renderer for server environment",
+  "keywords": ["julia", "fractal", "webgl", "graphics"],
   "version": "0.1.0",
+  "license": "Apache-2.0",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
   "types": "index.d.ts",
@@ -8,14 +11,23 @@
     "lib",
     "index.d.ts"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/slowli/julia-set.git"
+  },
+  "bugs": {
+    "url": "https://github.com/slowli/julia-set/issues"
+  },
   "scripts": {
-    "build": "rollup -c"
+    "clean": "rimraf lib",
+    "prepare": "rollup -c"
   },
   "dependencies": {
     "julia-set": "0.1.0",
     "puppeteer": "^1.11.0"
   },
   "devDependencies": {
+    "rimraf": "^2.6.2",
     "rollup": "^1.0.0"
   }
 }
