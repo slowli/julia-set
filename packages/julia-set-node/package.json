@@ -11,6 +11,9 @@
     "lib",
     "index.d.ts"
   ],
+  "engines": {
+    "node": ">=6"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/slowli/julia-set.git"
