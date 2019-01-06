@@ -85,6 +85,10 @@ To influence function priority, you can use any of three kinds of brackets: `()`
 The following string values can be used as `options.palette`:
 
 - `grayscale`
+- `red`
+- `green`
+- `tree` (brown and green tones)
+- `snow` (light-blue tones)
 
 ## License
 

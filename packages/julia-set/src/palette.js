@@ -1,7 +1,38 @@
 // @flow
 
 const PALETTES = {
-  grayscale: [[0, 0, 0, 255], [255, 255, 255, 255]],
+  grayscale: [[0, 0, 0], [187, 187, 187], [255, 255, 255]],
+  tree: [
+    [0, 0, 0],
+    [170, 0, 0],
+    [136, 204, 0],
+    [170, 255, 136],
+    [255, 255, 170],
+    [255, 255, 255],
+  ],
+  gold: [
+    [0, 0, 0],
+    [187, 187, 0],
+    [255, 187, 0],
+    [255, 255, 0],
+    [255, 255, 136],
+    [255, 255, 255],
+  ],
+  snow: [[0, 0, 0], [136, 170, 255], [255, 255, 255]],
+  red: [
+    [0, 0, 0],
+    [170, 34, 0],
+    [255, 34, 0],
+    [255, 102, 34],
+    [255, 255, 255],
+  ],
+  green: [
+    [0, 0, 0],
+    [0, 136, 0],
+    [0, 204, 34],
+    [0, 204, 136],
+    [255, 255, 255],
+  ],
 };
 
 export const PALETTE_SIZE = 256;
@@ -12,11 +43,18 @@ export type Palette = $Keys<typeof PALETTES> | [number, number, number, ?number]
 export type Color = [number, number, number, number];
 
 function toColorArray(palette: Palette): Color[] {
+  let colors;
   if (typeof palette === 'string') {
-    return PALETTES[palette];
+    if (!{}.hasOwnProperty.call(PALETTES, palette)) {
+      throw new Error(`Unknown named palette: ${palette}`);
+    }
+    colors = PALETTES[palette];
+  } else {
+    colors = palette;
   }
 
-  return palette.map(([r, g, b, alpha]) => [
+  // eslint-disable-next-line object-curly-newline
+  return colors.map(([r, g, b, alpha]) => [
     r, g, b, typeof alpha === 'number' ? alpha : 255,
   ]);
 }
