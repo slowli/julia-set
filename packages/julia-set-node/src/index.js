@@ -30,15 +30,17 @@ export default async function render(options) {
   await page.setViewport({ width, height });
   await page.addScriptTag({ path: require.resolve('julia-set') });
 
-  await page.evaluate((opt) => {
-    const { JuliaSet } = window;
-    JuliaSet.render(document.getElementById('canvas'), opt);
-  }, fractalOptions);
+  try {
+    await page.evaluate((opt) => {
+      const { JuliaSet } = window;
+      JuliaSet.render(document.getElementById('canvas'), opt);
+    }, fractalOptions);
 
-  const image = await page.screenshot(screenshotOptions);
-  await page.close();
-  if (browserNeedsClosing) {
-    await browser.close();
+    return await page.screenshot(screenshotOptions);
+  } finally {
+    await page.close();
+    if (browserNeedsClosing) {
+      await browser.close();
+    }
   }
-  return image;
 }

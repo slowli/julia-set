@@ -115,4 +115,20 @@ describe('render', () => {
       checkSnapshot(png, name);
     });
   });
+
+  it('exits after failure', async () => {
+    const savePath = path.join(tempDir, 'simple.error.png');
+    const options = FRACTALS.simple;
+
+    await expect(render({
+      browser,
+      screenshot: {
+        path: savePath,
+        ...FRACTAL_SIZE,
+      },
+      palette: 'no-idea-lol',
+      ...options,
+    })).rejects.toBeInstanceOf(Error);
+    expect(fs.existsSync(savePath)).toBeFalsy();
+  });
 });
