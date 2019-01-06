@@ -214,7 +214,7 @@ void main() {
 #else
     float k = texture2D(u_texture, v_position).a;
 #endif
-    //k = pow(k, 0.5);
+    // TODO: allow exponentation here to tune fractal contrast: k = pow(k, u_gamma);
     k *= 255.0 * INV_PALETTE_WIDTH;
     gl_FragColor = texture2D(u_palette, vec2(k + 0.5 * INV_PALETTE_WIDTH, 0.5));
   }
