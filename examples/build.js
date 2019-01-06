@@ -10,7 +10,7 @@ const fractals = {
     center: [-9.41, 0],
     iterations: 80,
     runawayDistance: 5.25,
-    palette: [[0, 0, 0], [128, 128, 255], [255, 255, 255]],
+    palette: 'snow',
   },
   star: {
     code: '0.8i0.3 * z + z/atanh(z^-6)',
@@ -18,7 +18,7 @@ const fractals = {
     center: [0, 0],
     iterations: 64,
     runawayDistance: 10,
-    palette: [[0, 0, 0], [192, 32, 32], [255, 255, 255]],
+    palette: 'red',
   },
   tiles: {
     code: 'log cosh(0i1.02 * z) + -5.61i0.2',
@@ -26,7 +26,7 @@ const fractals = {
     center: [0, 0],
     iterations: 64,
     runawayDistance: 7,
-    palette: [[0, 0, 0], [0, 192, 0], [255, 255, 255]],
+    palette: 'green',
   },
   field: {
     code: 'z + 0.25*z*atanh(z^8) - 0i0.33',
@@ -34,7 +34,15 @@ const fractals = {
     center: [0, 3.292],
     iterations: 48,
     runawayDistance: 10,
-    palette: [[0, 0, 0], [255, 192, 0], [255, 255, 255]],
+    palette: 'gold',
+  },
+  cup: {
+    code: 'z*(1.2 + asinh z^-4) + 0i-0.34',
+    height: 0.275,
+    center: [0, 0.843],
+    iterations: 48,
+    runawayDistance: 6,
+    palette: 'tree',
   },
 };
 
