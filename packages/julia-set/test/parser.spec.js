@@ -78,6 +78,41 @@ describe('parse', () => {
       expect(parse(code)).toEqual(program);
     });
   });
+
+  it('throws an error on invalid binary operator construction', () => {
+    const code = '1 + ';
+    expect(() => parse(code)).toThrow(/syntax error/i);
+  });
+
+  it('throws an error on invalid unary function construction', () => {
+    const code = '1 + sinh';
+    expect(() => parse(code)).toThrow(/syntax error/i);
+  });
+
+  it('throws an error on invalid syntax tree', () => {
+    const code = '1 + z z + 3';
+    expect(() => parse(code)).toThrow(/syntax error/i);
+  });
+
+  it('throws an error on unmatched brackets', () => {
+    const code = '(z + 2';
+    expect(() => parse(code)).toThrow(/unmatched brackets/i);
+  });
+
+  it('throws an error on extra brackets', () => {
+    const code = '(z - 1) + 2]';
+    expect(() => parse(code)).toThrow(/unmatched brackets/i);
+  });
+
+  it('throws an error on invalid variable', () => {
+    const code = 'x + 1';
+    expect(() => parse(code)).toThrow(/invalid variable/i);
+  });
+
+  it('throws an error on invalid token', () => {
+    const code = 'z ! 1';
+    expect(() => parse(code)).toThrow(/invalid symbol/i);
+  });
 });
 
 describe('prepareForShader', () => {

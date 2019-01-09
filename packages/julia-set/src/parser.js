@@ -291,7 +291,8 @@ function buildNotation(tree: TokenTree): string[] {
     case 'function': ({ name } = tree.value); break;
     case 'variable': name = 'var'; break;
     case 'number': name = 'data'; break;
-    default: // unreachable
+    // istanbul ignore next: unreachable
+    default:
   }
   notation.push(name);
 
@@ -353,6 +354,8 @@ export function prepareForShader(notation: Notation): { code: string, params: nu
           stack.push(`c_${token}(${lhs}, ${rhs})`);
           break;
         }
+
+        // istanbul ignore next: paranoid check
         default:
           throw new Error('Invalid operation arity');
       }

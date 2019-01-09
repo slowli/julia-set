@@ -34,4 +34,14 @@ describe('rasterize', () => {
       expect(Math.abs(b - 2 * i)).toBeLessThan(2);
     });
   });
+
+  it('works with named palette', () => {
+    const palette = [[0, 0, 0], [187, 187, 187], [255, 255, 255]];
+    const colors = rasterize(palette);
+    expect(rasterize('grayscale')).toEqual(colors);
+  });
+
+  it('throws an error or unknown named palette', () => {
+    expect(() => rasterize('dont-know-lol')).toThrow(/unknown/i);
+  });
 });
