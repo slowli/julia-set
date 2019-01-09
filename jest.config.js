@@ -4,6 +4,7 @@ module.exports = {
     '<rootDir>/packages/**/*.spec.js',
     '**/julia-set-node/test/*.spec.ts',
   ],
+  coverageDirectory: '<rootDir>/coverage/',
   coveragePathIgnorePatterns: [
     '/julia-set-node/lib/',
     'e2e-tests',

@@ -6,6 +6,8 @@
     "prepare": "lerna bootstrap",
     "test": "jest -c jest.config.js",
     "test:e2e": "jest -c jest-e2e.config.js",
+    "coverage": "jest -c jest.config.js --coverage",
+    "coverage:ci": "npm run coverage && codecov",
     "lint:js": "eslint --ignore-path .gitignore --ext .js,.vue .",
     "lint:types": "flow check"
   },
@@ -20,6 +22,7 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
+    "codecov": "^3.1.0",
     "copy-webpack-plugin": "^4.6.0",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",

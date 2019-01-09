@@ -25,3 +25,6 @@ script:
   # `jest-puppeteer` doesn't work in Node 6
   - if [[ $TRAVIS_NODE_VERSION != "6" ]]; then npm run test:e2e; fi
   - node examples/build.js 100 100
+
+after_success:
+  - if [[ $TRAVIS_NODE_VERSION == "10" ]]; then npm run coverage:ci; fi
