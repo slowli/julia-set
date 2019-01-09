@@ -31,6 +31,7 @@ export default async function render(options) {
   await page.addScriptTag({ path: require.resolve('julia-set') });
 
   try {
+    // istanbul ignore next: instrumentation breaks test
     await page.evaluate((opt) => {
       const { JuliaSet } = window;
       JuliaSet.render(document.getElementById('canvas'), opt);
