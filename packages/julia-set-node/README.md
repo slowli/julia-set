@@ -1,5 +1,16 @@
 # julia-set-node
 
+[![Build status][travis-image]][travis-url]
+[![Coverage report][coverage-image]][coverage-url]
+[![License: Apache-2.0][license-image]][license-url]
+
+[travis-image]: https://img.shields.io/travis/com/slowli/julia-set.svg
+[travis-url]: https://travis-ci.com/slowli/julia-set/
+[coverage-image]: https://img.shields.io/codecov/c/gh/slowli/julia-set.svg
+[coverage-url]: https://codecov.io/gh/slowli/julia-set/
+[license-image]: https://img.shields.io/github/license/slowli/julia-set.svg
+[license-url]: https://github.com/slowli/julia-set/blob/master/LICENSE   
+
 > Rendering [Julia sets] for complex functions on the server side.
 
 This package allows rendering Julia / Fatou sets for complex functions in Node.

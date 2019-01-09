@@ -1,5 +1,13 @@
 # julia-set
 
+[![Build status][travis-image]][travis-url]
+[![License: Apache-2.0][license-image]][license-url]
+
+[travis-image]: https://img.shields.io/travis/com/slowli/julia-set.svg
+[travis-url]: https://travis-ci.com/slowli/julia-set/
+[license-image]: https://img.shields.io/github/license/slowli/julia-set.svg
+[license-url]: https://github.com/slowli/julia-set/blob/master/LICENSE   
+
 > Rendering [Julia sets] for complex functions using WebGL.
 
 This package allows rendering Julia / Fatou sets for complex functions [in modern browsers][webgl-support].
