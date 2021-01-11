@@ -94,9 +94,15 @@ function toBeDifferentImage(receivedPng, referencePng, threshold = 0.01) {
     };
   }
 
-  const mismatchedPixels = matchImages(receivedPng.data, referencePng.data, null,
-    receivedPng.width, receivedPng.height, { threshold });
-  const mismatchedPercent = mismatchedPixels / (receivedPng.width * receivedPng.height) * 100;
+  const mismatchedPixels = matchImages(
+    receivedPng.data,
+    referencePng.data,
+    null,
+    receivedPng.width,
+    receivedPng.height,
+    { threshold },
+  );
+  const mismatchedPercent = (mismatchedPixels / (receivedPng.width * receivedPng.height)) * 100;
 
   return {
     pass: mismatchedPercent > 1,

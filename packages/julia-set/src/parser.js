@@ -192,7 +192,7 @@ function processBrackets(tokens: Array<BracketToken | CompiledToken>): CompiledT
 
   const processedTokens = tokens.map((token) => {
     if (token.type === 'function') {
-      const newToken: FunctionToken = Object.assign({}, token);
+      const newToken: FunctionToken = { ...token };
       newToken.priority = token.priority + level * maxPriority;
       return newToken;
     } if (token.type === '(') {
@@ -239,7 +239,7 @@ function buildTree(tokens: CompiledToken[]): TokenTree {
     }
   });
 
-  const forest: TokenTree[] = tokens.map(token => ({ value: token }));
+  const forest: TokenTree[] = tokens.map((token) => ({ value: token }));
   for (let pr = maxPriority; pr >= 0; pr -= 1) {
     // Process unary operators right to left
     for (let i = forest.length - 1; i >= 0; i -= 1) {

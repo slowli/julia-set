@@ -59,7 +59,7 @@ function toColorArray(palette: Palette): Color[] {
   ]);
 }
 
-export default function rasterize(palette: Palette) {
+export default function rasterize(palette: Palette): Color[] {
   const paletteColors = toColorArray(palette);
   const nColors = paletteColors.length;
   const colorDist = (PALETTE_SIZE - 1) / (nColors - 1);

@@ -37,7 +37,7 @@ describe('fractal', () => {
   });
 
   Object.keys(FRACTALS).forEach((name) => {
-    const options = Object.assign({}, FRACTALS[name]);
+    const options = { ...FRACTALS[name] };
     options.palette = [[255, 255, 255, 255], [0, 0, 0, 255]];
 
     it(`renders sample fractal: ${name}`, async () => {

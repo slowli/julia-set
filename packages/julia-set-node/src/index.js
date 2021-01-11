@@ -1,4 +1,3 @@
-import { Buffer } from 'buffer';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import puppeteer from 'puppeteer';
 

@@ -1,15 +1,16 @@
-const babel = require('rollup-plugin-babel');
-const resolve = require('rollup-plugin-node-resolve');
+const { babel } = require('@rollup/plugin-babel');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
 
 const babelConfig = {
   exclude: 'node_modules/**',
   babelrc: false,
+  babelHelpers: 'bundled',
   presets: [
     [
       '@babel/preset-env',
       {
         modules: false,
-        targets: { node: 6 },
+        targets: { node: 10 },
       },
     ],
   ],
@@ -18,7 +19,7 @@ const babelConfig = {
 module.exports = {
   input: 'src/index.js',
   plugins: [
-    resolve(),
+    nodeResolve(),
     babel(babelConfig),
   ],
   output: [
@@ -29,6 +30,7 @@ module.exports = {
     {
       file: 'lib/index.js',
       format: 'cjs',
+      exports: 'default',
     },
   ],
   external: ['puppeteer', 'buffer'],

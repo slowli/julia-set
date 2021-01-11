@@ -22,7 +22,7 @@ describe('render (TypeScript)', () => {
     };
     const options = Object.assign({ screenshot }, fractalOptions);
     const buffer: Uint8Array = await render(options);
-    expect(buffer).toBeInstanceOf(Uint8Array);
+    expect(buffer).toBeInstanceOf(Buffer); // FIXME: `toBeInstanceOf(Uint8Array)` doesn't work!
   });
 
   it('renders to a string buffer', async () => {
@@ -35,7 +35,7 @@ describe('render (TypeScript)', () => {
     };
     const options = Object.assign({ screenshot }, fractalOptions);
     const buffer: string = await render(options);
-    expect(buffer).toMatch(/^[A-Za-z0-9\/+]+$/);
+    expect(buffer).toMatch(/^[A-Za-z0-9\/+]+={0,2}$/);
   });
 
   it('renders to a file', async () => {
