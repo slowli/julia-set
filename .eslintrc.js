@@ -10,9 +10,9 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       'error',
       {
-        devDependencies: ['**/*.config.js', '**/*.spec.js', 'e2e-tests/**'],
+        devDependencies: ['**/*.config.js', '**/*.spec.js', 'e2e-tests/**', 'examples/**'],
         packageDir: __dirname,
-      }
-    ]
-  }
+      },
+    ],
+  },
 };

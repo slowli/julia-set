@@ -144,7 +144,7 @@ function bindVariables(glParams: GLParams, options: DrawingOptions, data: number
 
 function prepareProgram(glParams: GLParams, options: DrawingOptions): GLParams {
   const { context: gl } = glParams;
-  const outputParams = Object.assign({}, glParams);
+  const outputParams = { ...glParams };
   gl.viewport(0, 0, options.width, options.height);
 
   if (!outputParams.vertexShader) {
@@ -189,7 +189,7 @@ function prepareProgram(glParams: GLParams, options: DrawingOptions): GLParams {
 
 function prepareTexture(glParams: GLParams, options: DrawingOptions): GLParams {
   const gl = glParams.context;
-  const outputParams = Object.assign({}, glParams);
+  const outputParams = { ...glParams };
 
   const textureNeedsUpdate = !outputParams.texture
     || outputParams.canvasWidth !== options.width
@@ -228,7 +228,7 @@ function sameColors(cachedColors: Color[], paletteColors: Color[]): boolean {
 
 function preparePalette(glParams: GLParams, options: DrawingOptions): GLParams {
   const gl = glParams.context;
-  const outputParams = Object.assign({}, glParams);
+  const outputParams = { ...glParams };
 
   const paletteNeedsUpdate = !outputParams.palette
     || !sameColors(outputParams.paletteColors, options.paletteColors);
@@ -252,7 +252,6 @@ function preparePalette(glParams: GLParams, options: DrawingOptions): GLParams {
     gl.bindTexture(gl.TEXTURE_2D, outputParams.palette);
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, PALETTE_SIZE, 1, 0,
       gl.RGBA, gl.UNSIGNED_BYTE, paletteData);
-    outputParams.paletteNeedsUpdate = false;
   }
   gl.bindTexture(gl.TEXTURE_2D, null);
 

@@ -7,7 +7,7 @@ import draw, { newGLParams } from './gl';
 import type { Palette } from './palette';
 import type { DrawingOptions, GLParams } from './gl';
 
-export type RequiredOptions = { code: string };
+export type RequiredOptions = {| code: string |};
 
 type Options = {
   code: string,
@@ -33,7 +33,7 @@ function createDrawingOptions(
   options: Options,
 ): DrawingOptions {
   const height = +options.height;
-  const width = height * canvas.width / canvas.height;
+  const width = (height * canvas.width) / canvas.height;
 
   return {
     func: parse(options.code),
@@ -73,7 +73,7 @@ export default class JuliaSet {
   }
 
   constructor(canvas: HTMLCanvasElement, options: RequiredOptions) {
-    const resolvedOptions: Options = Object.assign({}, DEFAULT_OPTIONS, options);
+    const resolvedOptions: Options = { ...DEFAULT_OPTIONS, ...options };
     const canvasParams: { antialias: boolean } = { antialias: resolvedOptions.antialias };
 
     const context = canvas.getContext('webgl', canvasParams)

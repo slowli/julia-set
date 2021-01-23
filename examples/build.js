@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 
+const puppeteer = require('puppeteer');
 const path = require('path');
+
 const render = require('../packages/julia-set-node');
 
 const fractals = {
@@ -46,26 +48,34 @@ const fractals = {
   },
 };
 
-if (process.argv.length < 4) {
-  console.error(`Usage: ${path.basename(__filename)} WIDTH HEIGHT
+async function main() {
+  if (process.argv.length < 4) {
+    console.error(`Usage: ${path.basename(__filename)} WIDTH HEIGHT
 
     WIDTH and HEIGHT denote the size of generated images in pixels`);
-  process.exit(1);
+    process.exit(1);
+  }
+  const width = parseInt(process.argv[2], 10);
+  const height = parseInt(process.argv[3], 10);
+  console.log(`Creating ${width}x${height} images...`);
+
+  const browser = await puppeteer.launch();
+  console.log('Created browser');
+
+  const renderTasks = Object.keys(fractals).map((name) => {
+    const options = { browser, ...fractals[name] };
+    options.screenshot = {
+      width,
+      height,
+      quality: 92,
+      path: path.join(__dirname, `${name}.jpg`),
+    };
+
+    return render(options)
+      .then(() => console.log(`Successfully rendered fractal ${name}`));
+  });
+  await Promise.all(renderTasks);
+  await browser.close();
 }
-const width = parseInt(process.argv[2], 10);
-const height = parseInt(process.argv[3], 10);
-console.log(`Creating ${width}x${height} images...`);
 
-Object.keys(fractals).forEach((name) => {
-  const options = Object.assign({}, fractals[name]);
-  options.screenshot = {
-    width,
-    height,
-    quality: 92,
-    path: path.join(__dirname, `${name}.jpg`),
-  };
-
-  render(options)
-    .then(() => console.log(`Successfully rendered fractal ${name}`))
-    .catch(e => console.error(e));
-});
+main().catch(console.error);
