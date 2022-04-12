@@ -9,7 +9,8 @@
     "coverage": "jest -c jest.config.js --coverage",
     "coverage:ci": "npm run coverage && codecov",
     "lint:js": "eslint --ignore-path .gitignore --ext .js .",
-    "lint:types": "flow check"
+    "lint:types": "flow check",
+    "lint:ts": "tsc --noEmit"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
