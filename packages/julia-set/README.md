@@ -3,8 +3,8 @@
 [![Build status][travis-image]][travis-url]
 [![License: Apache-2.0][license-image]][license-url]
 
-[travis-image]: https://img.shields.io/travis/com/slowli/julia-set.svg
-[travis-url]: https://travis-ci.com/slowli/julia-set/
+[ci-image]: https://github.com/slowli/julia-set/workflows/CI/badge.svg?branch=master
+[ci-url]: https://github.com/slowli/julia-set/actions
 [license-image]: https://img.shields.io/github/license/slowli/julia-set.svg
 [license-url]: https://github.com/slowli/julia-set/blob/master/LICENSE   
 
@@ -49,9 +49,9 @@ declare interface Options {
 - `height` is the height of the rendered area. The width is determined automatically based on `height`
   and the canvas dimensions.
 - `iterations` is the maximum number of iterations performed by the algorithm.
-  More reveals more details, but the picture may become desaturated.
+  Greater values reveal more details, but the image may become desaturated.
 - `runawayDistance` is the stopgap distance for the algorithm. In some cases, increasing
-  it may reveal fractal details. 
+  it may reveal fractal details.
 - `antialias` corresponds to the [eponymous flag for `HMTLCanvasElement.getContext`][getContext()].
 
 ### Example

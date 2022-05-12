@@ -17,7 +17,7 @@
     "index.d.ts"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   },
   "repository": {
     "type": "git",
@@ -32,10 +32,10 @@
   },
   "dependencies": {
     "julia-set": "^0.1.0",
-    "puppeteer": "^5.5.0"
+    "puppeteer": "^14.0.0"
   },
   "devDependencies": {
     "rimraf": "^3.0.2",
-    "rollup": "^2.36.1"
+    "rollup": "^2.72.1"
   }
 }

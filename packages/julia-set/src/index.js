@@ -83,7 +83,7 @@ export default class JuliaSet {
     }
 
     const drawingOptions = createDrawingOptions(canvas, resolvedOptions);
-    const glParams = newGLParams(context);
+    const glParams = newGLParams(context, drawingOptions);
 
     this._canvas = canvas;
     this._options = resolvedOptions;

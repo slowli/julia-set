@@ -20,8 +20,7 @@ describe('render (TypeScript)', () => {
       height: 100,
       type: ('png' as 'png'),
     };
-    const options = Object.assign({ screenshot }, fractalOptions);
-    const buffer: Uint8Array = await render(options);
+    const buffer: Uint8Array = await render({ screenshot, ...fractalOptions });
     expect(buffer).toBeInstanceOf(Buffer); // FIXME: `toBeInstanceOf(Uint8Array)` doesn't work!
   });
 
@@ -33,8 +32,7 @@ describe('render (TypeScript)', () => {
       quality: 90,
       encoding: ('base64' as 'base64'),
     };
-    const options = Object.assign({ screenshot }, fractalOptions);
-    const buffer: string = await render(options);
+    const buffer: string = await render({ screenshot, ...fractalOptions });
     expect(buffer).toMatch(/^[A-Za-z0-9\/+]+={0,2}$/);
   });
 
@@ -49,8 +47,7 @@ describe('render (TypeScript)', () => {
       height: 100,
       path: imagePath,
     };
-    const options = Object.assign({ screenshot }, fractalOptions);
-    <void>await render(options);
+    <void>await render({ screenshot, ...fractalOptions });
     expect(fs.existsSync(imagePath)).toBeTruthy();
     fs.unlinkSync(imagePath);
   });

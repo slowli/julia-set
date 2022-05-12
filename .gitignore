@@ -5,5 +5,8 @@ lib
 dist
 coverage
 
+# TypeScript-generated files
+types.spec.js
+
 # IDE
 /.idea

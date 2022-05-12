@@ -2,7 +2,7 @@
 
 import path from 'path';
 import fs from 'fs';
-import matchImages from 'pixelmatch';
+import ssim from 'ssim.js';
 import { PNG } from 'pngjs';
 
 export const FRACTAL_SIZE = { width: 200, height: 200 };
@@ -80,7 +80,7 @@ export const FRACTALS = {
   },
 };
 
-function toBeDifferentImage(receivedPng, referencePng, threshold = 0.01) {
+function toBeDifferentImage(receivedPng, referencePng, ssimThreshold = 0.95) {
   if (receivedPng.width !== referencePng.width) {
     return {
       pass: true,
@@ -94,19 +94,10 @@ function toBeDifferentImage(receivedPng, referencePng, threshold = 0.01) {
     };
   }
 
-  const mismatchedPixels = matchImages(
-    receivedPng.data,
-    referencePng.data,
-    null,
-    receivedPng.width,
-    receivedPng.height,
-    { threshold },
-  );
-  const mismatchedPercent = (mismatchedPixels / (receivedPng.width * receivedPng.height)) * 100;
-
+  const { mssim } = ssim(receivedPng, referencePng);
   return {
-    pass: mismatchedPercent > 1,
-    message: () => `Mismatched pixels: ${mismatchedPercent.toFixed(2)}%`,
+    pass: mssim < ssimThreshold,
+    message: () => `SSIM: ${mssim.toFixed(4)}`,
   };
 }
 

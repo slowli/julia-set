@@ -8,11 +8,8 @@ import puppeteer from 'puppeteer';
 import rimraf from 'rimraf';
 
 import render from '../src';
-import {
-  FRACTALS,
-  FRACTAL_SIZE,
-  checkSnapshot,
-} from '../../../e2e-tests/samples';
+// eslint-disable-next-line import/no-relative-packages
+import { FRACTALS, FRACTAL_SIZE, checkSnapshot } from '../../../e2e-tests/samples';
 
 describe('render', () => {
   let tempDir = '';
