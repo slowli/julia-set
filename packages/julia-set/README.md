@@ -1,10 +1,13 @@
 # julia-set
 
-[![Build status][travis-image]][travis-url]
+[![Build status][ci-image]][ci-url]
+[![Coverage report][coverage-image]][coverage-url]
 [![License: Apache-2.0][license-image]][license-url]
 
 [ci-image]: https://github.com/slowli/julia-set/workflows/CI/badge.svg?branch=master
 [ci-url]: https://github.com/slowli/julia-set/actions
+[coverage-image]: https://img.shields.io/codecov/c/gh/slowli/julia-set.svg
+[coverage-url]: https://codecov.io/gh/slowli/julia-set/
 [license-image]: https://img.shields.io/github/license/slowli/julia-set.svg
 [license-url]: https://github.com/slowli/julia-set/blob/master/LICENSE   
 
