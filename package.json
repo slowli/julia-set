@@ -31,7 +31,7 @@
     "flow-bin": "^0.178.0",
     "jest": "^28.1.0",
     "jest-puppeteer": "^6.1.0",
-    "lerna": "^4.0.0",
+    "lerna": "^5.0.0",
     "mkdirp": "^1.0.4",
     "pngjs": "^6.0.0",
     "puppeteer": "^14.0.0",
