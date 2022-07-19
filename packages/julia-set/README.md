@@ -106,6 +106,6 @@ The following string values can be used as `options.palette`:
 `julia-set` is licensed under the [Apache 2.0 license][license].
 
 [Julia sets]: https://en.wikipedia.org/wiki/Julia_set
-[webgl-support]: https://caniuse.com/#feat=webgl
+[webgl-support]: https://caniuse.com/webgl
 [getContext()]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext
 [license]: https://www.apache.org/licenses/LICENSE-2.0
