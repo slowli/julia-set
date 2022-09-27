@@ -5,13 +5,8 @@ module.exports = {
     '<rootDir>/e2e-tests/*.spec.js',
     '**/julia-set/test/*.spec.ts',
   ],
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.json',
-    },
-  },
   transform: {
     '\\.js$': 'babel-jest',
-    '\\.ts$': 'ts-jest',
+    '\\.ts$': ['ts-jest', { tsconfig: 'tsconfig.json' }],
   },
 };
