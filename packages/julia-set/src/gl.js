@@ -192,7 +192,7 @@ function bindVariables(
 ): void {
   const { context: gl, program } = glParams;
 
-  let location = gl.getAttribLocation(program, 'a_position');
+  const attrLocation = gl.getAttribLocation(program, 'a_position');
   const vertices = [
     [-1.0, -1.0],
     [1.0, -1.0],
@@ -201,27 +201,27 @@ function bindVariables(
     [1.0, -1.0],
     [1.0, 1.0],
   ];
-  setAttributesArray(gl, location, vertices);
+  setAttributesArray(gl, attrLocation, vertices);
 
   // Bind uniforms
-  location = gl.getUniformLocation(program, 'u_coordOffsetScale');
+  let uniformLocation = gl.getUniformLocation(program, 'u_coordOffsetScale');
   gl.uniform4f(
-    location,
+    uniformLocation,
     options.minX,
     options.minY,
     options.maxX - options.minX,
     options.maxY - options.minY,
   );
-  location = gl.getUniformLocation(program, 'u_distance');
-  gl.uniform1f(location, options.distance);
-  location = gl.getUniformLocation(program, 'u_params');
-  gl.uniform2fv(location, new Float32Array(data));
-  location = gl.getUniformLocation(program, 'u_texture');
-  gl.uniform1i(location, 0);
-  location = gl.getUniformLocation(program, 'u_palette');
-  gl.uniform1i(location, 1);
-  location = gl.getUniformLocation(program, 'u_pixelSize');
-  gl.uniform2f(location, 1 / options.width, 1 / options.height);
+  uniformLocation = gl.getUniformLocation(program, 'u_distance');
+  gl.uniform1f(uniformLocation, options.distance);
+  uniformLocation = gl.getUniformLocation(program, 'u_params');
+  gl.uniform2fv(uniformLocation, new Float32Array(data));
+  uniformLocation = gl.getUniformLocation(program, 'u_texture');
+  gl.uniform1i(uniformLocation, 0);
+  uniformLocation = gl.getUniformLocation(program, 'u_palette');
+  gl.uniform1i(uniformLocation, 1);
+  uniformLocation = gl.getUniformLocation(program, 'u_pixelSize');
+  gl.uniform2f(uniformLocation, 1 / options.width, 1 / options.height);
 }
 
 export function newGLParams(gl: WebGLRenderingContext, options: DrawingOptions): GLParams {
@@ -252,6 +252,7 @@ function prepareProgram(glParams: GLParams, options: DrawingOptions): GLParams {
   gl.viewport(0, 0, options.width, options.height);
 
   let { program } = outputParams;
+  let programNeedsRebuild = false;
 
   const prepared = prepareForShader(options.func);
   if (
@@ -261,11 +262,11 @@ function prepareProgram(glParams: GLParams, options: DrawingOptions): GLParams {
     outputParams.code = prepared.code;
     outputParams.maxIterations = options.iterations;
     outputParams.fragmentShader = createFragmentShader(gl, prepared, options);
-    program = null;
+    programNeedsRebuild = true;
   }
 
   // Create the shader program
-  if (!program) {
+  if (programNeedsRebuild) {
     program = createProgram(gl, outputParams.vertexShader, outputParams.fragmentShader);
   }
   outputParams.program = program;
