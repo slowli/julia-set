@@ -1,7 +1,7 @@
 const glsl = require('rollup-plugin-glsl');
 const { babel } = require('@rollup/plugin-babel');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
-const { terser } = require('rollup-plugin-terser');
+const terser = require('@rollup/plugin-terser');
 
 const babelConfig = {
   exclude: 'node_modules/**',
