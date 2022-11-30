@@ -4,6 +4,9 @@ import path from 'path';
 import render from '..';
 import { Options } from 'julia-set';
 
+// The default timeout doesn't always work.
+jest.setTimeout(15000);
+
 const fractalOptions: Options = {
   code: '0i1 * acosh(cosh(0i1 * z) - arg z^-2) + -0.05i0.05',
   height: 8,
@@ -21,7 +24,7 @@ describe('render (TypeScript)', () => {
       type: ('png' as 'png'),
     };
     const buffer: Uint8Array = await render({ screenshot, ...fractalOptions });
-    expect(buffer).toBeInstanceOf(Buffer); // FIXME: `toBeInstanceOf(Uint8Array)` doesn't work!
+    expect(buffer).toBeInstanceOf(Buffer);
   });
 
   it('renders to a string buffer', async () => {
