@@ -32,10 +32,10 @@
   },
   "dependencies": {
     "julia-set": "^0.2.0",
-    "puppeteer": "^19.3.0"
+    "puppeteer": "^19.4.1"
   },
   "devDependencies": {
     "rimraf": "^3.0.2",
-    "rollup": "^3.5.0"
+    "rollup": "^3.9.0"
   }
 }
