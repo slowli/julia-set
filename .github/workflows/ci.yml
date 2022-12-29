@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [14.x, 16.x, 17.x]
+        node: [14.x, 16.x, 18.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -37,4 +37,4 @@ jobs:
 
       - name: Report coverage
         run: npm run coverage:ci
-        if: startsWith(matrix.node-version, '16')
+        if: startsWith(matrix.node, '18')
