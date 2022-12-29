@@ -1,14 +1,14 @@
 # Julia Sets
 
-[![Build status][travis-image]][travis-url]
+[![Build status][ci-image]][ci-url]
 [![Coverage report][coverage-image]][coverage-url]
 [![License: Apache-2.0][license-image]][license-url]
 
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![maintained with lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 
-[travis-image]: https://img.shields.io/travis/com/slowli/julia-set.svg
-[travis-url]: https://travis-ci.com/slowli/julia-set/
+[ci-image]: https://github.com/slowli/julia-set/workflows/CI/badge.svg?branch=master
+[ci-url]: https://github.com/slowli/julia-set/actions
 [coverage-image]: https://img.shields.io/codecov/c/gh/slowli/julia-set.svg
 [coverage-url]: https://codecov.io/gh/slowli/julia-set/
 [license-image]: https://img.shields.io/github/license/slowli/julia-set.svg
