@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import fs from 'fs';
+import { promises as fs } from 'fs';
 import os from 'os';
 import path from 'path';
 import { PNG } from 'pngjs';
@@ -16,29 +16,13 @@ describe('render', () => {
   let browser = null;
 
   beforeAll(async () => {
-    tempDir = await new Promise((resolve, reject) => {
-      fs.mkdtemp(path.join(os.tmpdir(), 'julia-set-node-'), (err, dir) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(dir);
-        }
-      });
-    });
+    tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'julia-set-node-'));
     browser = await puppeteer.launch();
   });
 
   afterAll(async () => {
     await browser.close();
-    await new Promise((resolve, reject) => {
-      rimraf(tempDir, (err) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve();
-        }
-      });
-    });
+    await rimraf(tempDir);
   });
 
   it('works without browser instance', async () => {
@@ -107,7 +91,7 @@ describe('render', () => {
         ...options,
       });
 
-      const buffer = fs.readFileSync(savePath);
+      const buffer = await fs.readFile(savePath);
       const png = PNG.sync.read(buffer);
       checkSnapshot(png, name);
     });
@@ -126,6 +110,7 @@ describe('render', () => {
       palette: 'no-idea-lol',
       ...options,
     })).rejects.toBeInstanceOf(Error);
-    expect(fs.existsSync(savePath)).toBeFalsy();
+
+    await expect(async () => fs.access(savePath)).rejects.toBeDefined();
   });
 });
