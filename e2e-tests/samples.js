@@ -1,7 +1,7 @@
 /* eslint-env jest */
 
 import path from 'path';
-import fs from 'fs';
+import { promises as fs } from 'fs';
 import ssim from 'ssim.js';
 import { PNG } from 'pngjs';
 
@@ -110,20 +110,26 @@ export function parsePng(url) {
   return PNG.sync.read(buffer);
 }
 
-export function checkSnapshot(png, snapshotName) {
+export async function checkSnapshot(png, snapshotName) {
   const snapshotPath = path.join(__dirname, `__snapshots__/${snapshotName}.png`);
+  let snapshotPathExists = true;
+  try {
+    await fs.access(snapshotPath);
+  } catch (e) {
+    snapshotPathExists = false;
+  }
 
-  if (!fs.existsSync(snapshotPath)) {
+  if (!snapshotPathExists) {
     if (process.env.UPDATE_SNAPSHOTS) {
       // Save snapshot
       const data = PNG.sync.write(png, { colorType: 0 });
-      fs.writeFileSync(snapshotPath, data);
+      await fs.writeFile(snapshotPath, data);
     } else {
       throw new Error(`Snapshot ${snapshotName} not found; aborting.`);
     }
   } else {
     // Load snapshot and compare to the supplied data.
-    const data = fs.readFileSync(snapshotPath);
+    const data = await fs.readFile(snapshotPath);
     const referencePng = PNG.sync.read(data);
     expect(png).not.toBeDifferentImage(referencePng);
   }

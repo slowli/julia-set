@@ -49,7 +49,7 @@ describe('fractal', () => {
       }, options);
 
       const png = parsePng(pixels);
-      checkSnapshot(png, name);
+      await checkSnapshot(png, name);
     });
   });
 });

@@ -1,4 +1,4 @@
-import fs from 'fs';
+import { promises as fs } from 'fs';
 import os from 'os';
 import path from 'path';
 import render from '..';
@@ -51,7 +51,7 @@ describe('render (TypeScript)', () => {
       path: imagePath,
     };
     <void>await render({ screenshot, ...fractalOptions });
-    expect(fs.existsSync(imagePath)).toBeTruthy();
-    fs.unlinkSync(imagePath);
+    await expect(fs.access(imagePath)).resolves.toBeUndefined();
+    await fs.unlink(imagePath);
   });
 });
