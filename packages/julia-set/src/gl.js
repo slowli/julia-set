@@ -173,7 +173,7 @@ function setAttributesArray(
   array: number[][],
 ): void {
   const len = array[0].length;
-  const flattened = [];
+  const flattened: number[] = [];
   array.forEach((row) => {
     flattened.push(...row);
   });
@@ -241,7 +241,7 @@ export function newGLParams(gl: WebGLRenderingContext, options: DrawingOptions):
     maxIterations: options.iterations,
     canvasWidth: options.width,
     canvasHeight: options.height,
-    paletteColors: [], // will be updated by `preparePalette`
+    paletteColors: ([]: Color[]), // will be updated by `preparePalette`
   };
   return preparePalette(params, options);
 }
