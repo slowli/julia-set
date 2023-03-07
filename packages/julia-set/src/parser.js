@@ -332,7 +332,7 @@ export function prepareForShader(notation: Notation): { code: string, params: nu
     values.push(im);
   });
 
-  const stack = [];
+  const stack: string[] = [];
   let numberPtr = 0;
 
   notation.tokens.forEach((token) => {

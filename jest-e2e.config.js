@@ -1,5 +1,5 @@
 module.exports = {
-  preset: 'jest-puppeteer',
+  preset: './node_modules/jest-puppeteer/jest-preset.js',
   moduleFileExtensions: ['js', 'ts'],
   testMatch: [
     '<rootDir>/e2e-tests/*.spec.js',

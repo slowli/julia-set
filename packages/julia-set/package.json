@@ -29,7 +29,7 @@
     "prepare": "rollup -c"
   },
   "devDependencies": {
-    "rimraf": "^4.1.2",
-    "rollup": "^3.17.3"
+    "rimraf": "^4.3.1",
+    "rollup": "^3.18.0"
   }
 }
