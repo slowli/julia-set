@@ -75,7 +75,7 @@ export default class JuliaSet {
   constructor(canvas: HTMLCanvasElement, options: RequiredOptions) {
     const resolvedOptions: Options = { ...DEFAULT_OPTIONS, ...options };
     // eslint-disable-next-line no-undef
-    const canvasParams: $Partial<WebGLContextAttributes> = {
+    const canvasParams: Partial<WebGLContextAttributes> = {
       antialias: resolvedOptions.antialias,
     };
 
