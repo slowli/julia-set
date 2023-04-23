@@ -5,7 +5,7 @@ import os from 'os';
 import path from 'path';
 import { PNG } from 'pngjs';
 import puppeteer from 'puppeteer';
-import rimraf from 'rimraf';
+import { rimraf } from 'rimraf';
 
 import render from '../src';
 // eslint-disable-next-line import/no-relative-packages
