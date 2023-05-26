@@ -23,7 +23,7 @@ export default async function render(options) {
   const { width, height, ...screenshotOptions } = screenshot;
 
   const browserNeedsClosing = !maybeBrowser;
-  const browser = maybeBrowser || await puppeteer.launch();
+  const browser = maybeBrowser || await puppeteer.launch({ headless: 'new' });
   const page = await browser.newPage();
   await page.goto(createDataUrl({ width, height }));
   await page.setViewport({ width, height });

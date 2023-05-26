@@ -59,7 +59,7 @@ async function main() {
   const height = parseInt(process.argv[3], 10);
   console.log(`Creating ${width}x${height} images...`);
 
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ headless: 'new' });
   console.log('Created browser');
 
   const renderTasks = Object.keys(fractals).map((name) => {

@@ -17,7 +17,7 @@ describe('render', () => {
 
   beforeAll(async () => {
     tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'julia-set-node-'));
-    browser = await puppeteer.launch();
+    browser = await puppeteer.launch({ headless: 'new' });
   });
 
   afterAll(async () => {

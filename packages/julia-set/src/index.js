@@ -94,7 +94,7 @@ export default class JuliaSet {
   }
 
   // eslint-disable-next-line no-undef
-  update(options?: $Shape<Options>): void {
+  update(options?: Partial<Options>): void {
     Object.assign(this._options, options || {});
     this._glParams = draw(this._glParams, createDrawingOptions(this._canvas, this._options));
   }
