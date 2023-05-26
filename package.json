@@ -43,5 +43,10 @@
     "ssim.js": "^3.5.0",
     "ts-jest": "^29.1.0",
     "typescript": "^5.0.4"
+  },
+  "jest-puppeteer": {
+    "launch": {
+      "headless": "new"
+    }
   }
 }

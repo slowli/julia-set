@@ -22,13 +22,8 @@ export const FRACTALS = {
     iterations: 80,
     runawayDistance: 4,
   },
-  exp: {
-    code: 'exp(z^-4) + 0i0.15',
-    height: 4,
-    center: [0, 0],
-    iterations: 60,
-    runawayDistance: 9,
-  },
+  // TODO: restore `exp` fractal once it's properly rendered by Puppeteer
+  //  launched with { headless: 'new' }
   star: {
     code: 'z*(1.05 + atanh(z^-5))',
     height: 4,
