@@ -5,7 +5,6 @@
 [![License: Apache-2.0][license-image]][license-url]
 
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
-[![maintained with lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 
 [ci-image]: https://github.com/slowli/julia-set/workflows/CI/badge.svg?branch=master
 [ci-url]: https://github.com/slowli/julia-set/actions
