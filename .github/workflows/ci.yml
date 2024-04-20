@@ -44,4 +44,5 @@ jobs:
         if: startsWith(matrix.node, '18')
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          dry_run: true
+          verbose: true
+          fail_ci_if_error: true
