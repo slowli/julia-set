@@ -14,10 +14,10 @@ jobs:
         node: [16.x, 18.x, 20.x]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
 
@@ -35,6 +35,13 @@ jobs:
       - name: Run example
         run: node examples/build.js 100 100
 
-      - name: Report coverage
-        run: npm run coverage:ci
+      - name: Collect coverage
+        run: npm run coverage
         if: startsWith(matrix.node, '18')
+
+      - name: Report coverage
+        uses: codecov/codecov-action@v4
+        if: startsWith(matrix.node, '18')
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          dry_run: true

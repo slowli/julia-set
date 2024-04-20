@@ -7,7 +7,6 @@
     "test": "jest -c jest.config.js",
     "test:e2e": "jest -c jest-e2e.config.js",
     "coverage": "jest -c jest.config.js --coverage",
-    "coverage:ci": "npm run coverage && codecov",
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint --ignore-path .gitignore --ext .js .",
     "lint:types": "flow check",
